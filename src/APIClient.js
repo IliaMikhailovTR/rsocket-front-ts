@@ -16,7 +16,7 @@ export default class APIClient {
             metadata: encodeCompositeMetadata([
                 [MESSAGE_RSOCKET_ROUTING, encodeRoute('user')],
             ]),
-        }).subscribe({
+        });/*.subscribe({
             onSubscribe(s) {
                 console.log("subscribed")
                 s.request(2147483642)
@@ -34,6 +34,6 @@ export default class APIClient {
                 console.log("that's it")
                 // resolve()
             }
-        });
+        });*/
     }
 }

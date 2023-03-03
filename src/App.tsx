@@ -1,5 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import './App.css';
+// @ts-ignore
+import Flowable from 'rsocket-flowable';
 
 import APIClient from "./APIClient";
 import {connect} from "./RSocket";
@@ -18,13 +20,13 @@ function App() {
     useEffect(() => {
         init()
     }, []);
-    // run();
+
     function readMessage() {
         const apiClient = client.current;
-        apiClient.getMessage(setMessage).finally()
+        const flowable = new Flowable(apiClient.getMessage(setMessage))
+        flowable.subscribe()
+        // apiClient.getMessage(setMessage).finally()
     }
-
-    // readMessage()
 
     return (
         <div>
